@@ -1,5 +1,5 @@
 ---
-- hosts: dgv014601.safeway.com
+- hosts: all
   remote_user: ea00wa
   tasks:
     - name: SSH to remote Legacy server and reset pwd for user
