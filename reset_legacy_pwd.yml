@@ -6,5 +6,5 @@
       copy: src=/opt/ansible_tower/scripts/reset_legacy_pwd.sh dest=/tmp/reset_legacy_pwd.sh mode=0750
 
     - name: Execute the script
-      command: /bin/sh /tmp/reset_legacy_pwd.sh
+      command: /bin/sh /tmp/reset_legacy_pwd.sh '{{ userarg }}'
       become: true
