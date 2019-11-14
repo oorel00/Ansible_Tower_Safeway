@@ -5,12 +5,11 @@
   hosts: "*"
   tasks:
     - name: use args, environment and loop within shell
-      raw: echo "Inserting this _text_ to File $TARGET for user '{{ userarg }}' " > $TARGET 
+      raw: echo "Inserting this _text_ to File $TARGET for user '{{ userarg }}' " > '{{ item }}' 
       args: 
         executable: /bin/bash
         chdir: /tmp
-      vars:
-        TARGET: "{{ item }}"
+      
       loop:
         - ansible_test_file1
         - ansible_test_file2
