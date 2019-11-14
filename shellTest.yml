@@ -8,6 +8,7 @@
       raw: echo "Inserting this _text_ to File $TARGET for user '{{ userarg }}' " > $TARGET 
       args: 
         chdir: /tmp
+        executable: /bin/bash
       environment:
         TARGET: "{{ item }}"
       loop:
