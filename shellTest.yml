@@ -13,3 +13,7 @@
       loop:
         - ansible_test_file1
         - ansible_test_file2
+    - name: display logged on users and current timestamp
+      raw: who && date
+      args: 
+        executable: /bin/bash
