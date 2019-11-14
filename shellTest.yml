@@ -12,7 +12,9 @@
 
     - name: display contents of /tmp
       raw: ls -ltra /tmp 
-
+      args: 
+        executable: /bin/bash
+      
       loop:
         - ansible_test_file1
         - ansible_test_file2
