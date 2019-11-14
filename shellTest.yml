@@ -14,6 +14,6 @@
         - ansible_test_file1
         - ansible_test_file2
     - name: display logged on users and current timestamp
-      raw: echo -e "logged on users:\n `who`" && date
+      raw: echo -e "logged on users:\n `who`" && date && uname 
       args: 
         executable: /bin/bash
