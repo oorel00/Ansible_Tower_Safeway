@@ -1,6 +1,7 @@
 ---
 # shellTest.yml 
 - name: run tasks on all hosts stores in inventory 
+  gather_facts: no
   hosts: "*"
   tasks:
     - name: use args, environment and loop within shell
