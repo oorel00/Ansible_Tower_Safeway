@@ -1,0 +1,14 @@
+---
+# shellTest.yml 
+- name: run tasks on all hosts stores in inventory 
+  hosts: "*"
+  tasks:
+    - name: use args, environment and loop within shell
+	    shell: echo " Inserting this _text_ to File: $TARGET" > $TARGET 
+	    args: 
+	      chdir: /tmp
+	    environment:
+	      TARGET: "{{item }}"
+	    loop:
+	      - ansible_test_file1
+		    - ansible_test_file2
