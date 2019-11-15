@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: no
+  remote_user: ea00wa
+  tasks:
+    - name: SSH to remote Legacy server and reset pwd for user
+      script: "files/OO_change_unix_pw {{ newpass }} {{ curuser }}"
+
+    - name: Execute echo
+      raw: echo "Password has been reset for user {{ curuser }} on `uname -n`"
