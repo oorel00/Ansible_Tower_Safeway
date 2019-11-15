@@ -27,6 +27,7 @@ fi
 reset_pw ()
 {
   CURUSER=$1
+  timestamp=`date`
   NEWPASS=$(dd if=/dev/urandom bs=64 count=1 2>/dev/null | tr -cd '[:alnum:]'|cut -c 1-12)
   if [[ $(grep -c "^${CURUSER}:" /etc/passwd) -lt 1 ]]; then
     echo "User does not exist."
@@ -39,6 +40,7 @@ reset_pw ()
 ${CURUSER},
 Your password has been reset on server $(hostname). Please log in and change your password immediately.
 Your current password is: ${NEWPASS}
+Password Change TimeStamp: ${timestamp}
 EOF
 
   return 0
