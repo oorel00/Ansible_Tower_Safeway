@@ -4,6 +4,7 @@
   remote_user: ea00wa
   tasks:
     - name: SSH to remote Legacy server and reset pwd for user
+      become: true
       copy: src=/opt/ansible_tower/scripts/reset_legacy_pwd.sh dest=/tmp/reset_legacy_pwd.sh mode=0750
 
     - name: Execute echo
