@@ -1,0 +1,50 @@
+#
+# OO script to change UNIX user password, OO_change_unix_pw <Password> <UserID>
+# 11/13/2019 - oorel00 - Convert from HPOO to Ansible
+# Arguments: $NEWPASS $CURUSER
+#
+
+#!/bin/ksh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+NEWPASS=$1
+CURUSER=$2
+OStype=`uname`
+
+case $OStype in
+
+        'Linux')
+        grep ${CURUSER} /etc/passwd 1>/dev/null 2>&1
+        if [ $? != 0 ];then
+        echo " `hostname`,UserID does not exist on the system"
+        exit 0
+        else
+        echo ${NEWPASS} | passwd --stdin ${CURUSER} 1>/dev/null 2>&1
+        chage -d 0 ${CURUSER} 1>/dev/null 2>&1
+        echo " `hostname`,Password Changed Successfully"
+        exit 0
+        fi
+        ;;
+        'AIX')
+        grep ${CURUSER} /etc/passwd 1>/dev/null 2>&1
+        if [ $? != 0 ];then
+        echo " `hostname`,UserID does not exist on the system"
+        exit 0
+        else
+        echo "${CURUSER}:${NEWPASS}" | chpasswd 1>/dev/null 2>&1
+        chsec -f /etc/security/lastlog -a "unsuccessful_login_count=0" -s ${CURUSER} 1>/                                                                                                      dev/null 2>&1
+        echo " `hostname`,Password Changed Successfully"
+        exit 0
+        fi
+        ;;
+        'SunOS')
+        grep ${CURUSER} /etc/passwd 1>/dev/null 2>&1
+        if [ $? != 0 ];then
+        echo " `hostname`,UserID does not exist on the system"
+        exit 0
+        else
+        setpwd -u ${CURUSER} -p ${NEWPASS}
+        echo " `hostname`,Password Changed Successfully"
+        exit 0
+        fi
+        ;;
+esac
