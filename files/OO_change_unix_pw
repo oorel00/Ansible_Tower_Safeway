@@ -13,6 +13,7 @@ OStype=`uname`
 case $OStype in
 
         'Linux')
+        sname=`basename "$0"`
         echo "OStype checker has determined this system is: Linux"
         timestamp=`date`
         grep ${CURUSER} /etc/passwd 1>/dev/null 2>&1
@@ -28,6 +29,7 @@ ${CURUSER},
 Your password has been reset on server $(hostname). Please log in and change your password immediately.
 Your current password is: ${NEWPASS}
 Password Change TimeStamp: ${timestamp}
+Script name: ${sname}
 EOF
         exit 0
         fi
