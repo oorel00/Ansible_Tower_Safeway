@@ -36,11 +36,12 @@ reset_pw ()
   echo ${NEWPASS} | passwd --stdin ${CURUSER} > /dev/null 2>&1
   chage -d 0 ${CURUSER} > /dev/null 2>&1
 
-  cat << EOF | mailx -s "Password reset : $(hostname)" "${CURUSER}@safeway.com"
+  cat << EOF | mailx -s "Password reset : $(hostname) - ${sn}" "${CURUSER}@safeway.com"
 ${CURUSER},
 Your password has been reset on server $(hostname). Please log in and change your password immediately.
 Your current password is: ${NEWPASS}
 Password Change TimeStamp: ${timestamp}
+By Script: ${sn}
 EOF
 
   return 0
