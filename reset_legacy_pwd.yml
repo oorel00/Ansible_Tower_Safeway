@@ -7,5 +7,5 @@
       script: "files/reset_legacy_pwd.sh {{ userarg }}"
 
     - name: Execute echo
-      raw: echo "this yml file is OUTSIDE playbooks/ directory."
+      raw: echo "Password has been reset for user {{ userarg }} on `uname -n`"
   
