@@ -27,10 +27,10 @@ case $OStype in
         cat << EOF | mailx -s "Password reset : $(hostname) - ${sname} " "${CURUSER}@safeway.com"
         ${CURUSER},
         Your password has been reset on server $(hostname). Please log in and change your password immediately.
-        Your current password is: ${NEWPASS} 
-        Password Change TimeStamp: ${timestamp} 
-        Script name: ${sname} - OSType: ${OStype} 
-        EOF
+Your current password is: ${NEWPASS} 
+Password Change TimeStamp: ${timestamp} 
+Script name: ${sname} - OSType: ${OStype} 
+EOF
         exit 0
         fi
         ;;
