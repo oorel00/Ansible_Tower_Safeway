@@ -29,9 +29,10 @@ cat << EOF | mailx -s "Password reset on: ${host} - ${sname} " "${CURUSER}@safew
 ${CURUSER},
 Your password has been reset on server $(hostname). Please log in and change your password immediately.
 Your current password is: ${NEWPASS} 
-Password Change TimeStamp: ${dnt}  
-Script name: ${sname} 
-OSType: ${OStype} 
+Password Change Time: ${dnt}
+Script name: ${sname}
+OSType: ${OStype}
+
 EOF
         exit 0
         fi
