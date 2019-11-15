@@ -30,6 +30,7 @@ ${CURUSER},
 Your password has been reset on server $(hostname). Please log in and change your password immediately.
 Your current password is: ${NEWPASS} 
 Password Change Time: ${dnt}
+
 Script name: ${sname}
 OSType: ${OStype}
 
