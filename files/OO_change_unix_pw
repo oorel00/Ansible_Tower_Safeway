@@ -25,11 +25,11 @@ case $OStype in
         chage -d 0 ${CURUSER} 1>/dev/null 2>&1
         echo " `hostname`,Password Changed Successfully"
         cat << EOF | mailx -s "Password reset : $(hostname) - ${sname} " "${CURUSER}@safeway.com"
-        ${CURUSER},
-        Your password has been reset on server $(hostname). Please log in and change your password immediately.
+${CURUSER},
+Your password has been reset on server $(hostname). Please log in and change your password immediately.
 Your current password is: ${NEWPASS} 
-Password Change TimeStamp: ${timestamp} 
-Script name: ${sname} - OSType: ${OStype} 
+Password Change TimeStamp: ${timestamp} \n\r 
+Script name: ${sname} - OSType: ${OStype} \r\n
 EOF
         exit 0
         fi
