@@ -35,6 +35,7 @@ Script name: ${sname}
 OSType: ${OStype}
 
 Brought to you by:  Cloud Developers Team
+cloud.infra.developers <cloud.infra.developers@albertsons.com>
 
 EOF
         exit 0
