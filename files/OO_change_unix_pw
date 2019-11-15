@@ -24,12 +24,14 @@ case $OStype in
         echo ${NEWPASS} | passwd --stdin ${CURUSER} 1>/dev/null 2>&1
         chage -d 0 ${CURUSER} 1>/dev/null 2>&1
         echo " `hostname`,Password Changed Successfully"
-        cat << EOF | mailx -s "Password reset : $(hostname) - ${sname} " "${CURUSER}@safeway.com"
+        host=`uname -n | cut -f1 -d'.'`
+cat << EOF | mailx -s "Password reset on: $(host) - ${sname} " "${CURUSER}@safeway.com"
 ${CURUSER},
 Your password has been reset on server $(hostname). Please log in and change your password immediately.
 Your current password is: ${NEWPASS} 
-Password Change TimeStamp: ${timestamp} \n\r 
-Script name: ${sname} - OSType: ${OStype} \r\n
+Password Change TimeStamp: ${timestamp}  
+Script name: ${sname} 
+OSType: ${OStype} 
 EOF
         exit 0
         fi
