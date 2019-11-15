@@ -13,6 +13,7 @@ OStype=`uname`
 case $OStype in
 
         'Linux')
+        echo "OStype checker has determined this system is: Linux"
         timestamp=`date`
         grep ${CURUSER} /etc/passwd 1>/dev/null 2>&1
         if [ $? != 0 ];then
