@@ -4,7 +4,7 @@
   hosts: all
   tasks:
     - name: verify account '{{ userarg }}'
-      raw: id '{{ userarg }}' && echo "Userid: \"{{ userarg }}\" Exists." || echo "ID \"{{ userarg }}\" not found."
+      raw: id '{{ userarg }}' && echo "Userid:  Exists." || echo "ID \"{{ userarg }}\" not found."
       args: 
         executable: /bin/bash
         
