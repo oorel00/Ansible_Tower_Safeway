@@ -34,8 +34,7 @@ Password Change Time: ${dnt}
 Script name: ${sname}
 OSType: ${OStype}
 
-Brought to you by:  Cloud Developers Team
-cloud.infra.developers <cloud.infra.developers@albertsons.com>
+Brought to you by:  cloud.infra.developers <cloud.infra.developers@albertsons.com>
 
 EOF
         exit 0
