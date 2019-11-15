@@ -34,6 +34,8 @@ Password Change Time: ${dnt}
 Script name: ${sname}
 OSType: ${OStype}
 
+Brought to you by:  Cloud Developers Team
+
 EOF
         exit 0
         fi
