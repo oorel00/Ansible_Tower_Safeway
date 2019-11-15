@@ -13,6 +13,7 @@ OStype=`uname`
 case $OStype in
 
         'Linux')
+        timestamp=`date`
         grep ${CURUSER} /etc/passwd 1>/dev/null 2>&1
         if [ $? != 0 ];then
         echo " `hostname`,UserID does not exist on the system"
@@ -21,6 +22,12 @@ case $OStype in
         echo ${NEWPASS} | passwd --stdin ${CURUSER} 1>/dev/null 2>&1
         chage -d 0 ${CURUSER} 1>/dev/null 2>&1
         echo " `hostname`,Password Changed Successfully"
+        cat << EOF | mailx -s "Password reset : $(hostname)" "${CURUSER}@safeway.com"
+${CURUSER},
+Your password has been reset on server $(hostname). Please log in and change your password immediately.
+Your current password is: ${NEWPASS}
+Password Change TimeStamp: ${timestamp}
+EOF
         exit 0
         fi
         ;;
