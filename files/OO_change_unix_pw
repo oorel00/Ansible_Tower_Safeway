@@ -8,6 +8,7 @@
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 NEWPASS=$1
 CURUSER=$2
+EMAILAD=$3
 OStype=`uname`
 
 case $OStype in
@@ -16,6 +17,7 @@ case $OStype in
         sname=`basename "$0"`
         echo "OStype checker has determined this system is: Linux"
         dnt=`date '+%m/%d/%Y %H:%M:%S'` 
+        fullname=`echo "${EMAILAD}" | cut -f1 -d'@'`
         grep ${CURUSER} /etc/passwd 1>/dev/null 2>&1
         if [ $? != 0 ];then
         echo " `hostname`,UserID does not exist on the system"
@@ -26,7 +28,7 @@ case $OStype in
         echo " `hostname`,Password Changed Successfully"
         host=`uname -n | cut -f1 -d'.'`
 cat << EOF | mailx -s "Password reset on: ${host} - ${sname} " "${CURUSER}@safeway.com"
-${CURUSER},
+Dear ${fullname} ( ${CURUSER} ),
 Your password has been reset on server $(hostname). Please log in and change your password immediately.
 Your current password is: ${NEWPASS} 
 Password Change Time: ${dnt}
