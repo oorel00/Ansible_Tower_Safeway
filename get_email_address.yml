@@ -4,7 +4,7 @@
   remote_user: ea00wa
   tasks:
     - name: run perl script to pull email address 
-      raw: perl /home/ea00wa/ldaplookup.pl -u {{ userarg }} | grep mail | awk '\{print $3\}'
+      raw: perl /home/ea00wa/ldaplookup.pl -u {{ userarg }} | grep mail | awk '{print $3}'
       register: emailaddr
     - name: " pass stored emailaddr var to next step"
       set_stats:
