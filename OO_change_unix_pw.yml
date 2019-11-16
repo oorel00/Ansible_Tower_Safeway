@@ -4,7 +4,7 @@
   remote_user: ea00wa
   tasks:
     - name: SSH to remote Legacy server and reset pwd for user
-      script: "files/OO_change_unix_pw {{ newpass }} {{ curuser }}"
+      script: "files/OO_change_unix_pw {{ newpass }} {{ curuser }} {{ saved_email_address }}"
 
     - name: Execute echo
-      raw: echo "Password has been reset for user {{ curuser }} on `uname -n`"
+      raw: echo "Password has been reset for user {{ curuser }} on `uname -n`  {{ saved_email_address }}"
